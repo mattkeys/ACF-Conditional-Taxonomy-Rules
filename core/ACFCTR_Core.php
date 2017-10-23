@@ -30,7 +30,6 @@ class ACFCTR_Core
 		}
 	}
 
-
 	public function conditional_taxonomy_select_args( $field )
 	{
 		if ( ! isset( $field['class'] ) ) {
@@ -49,7 +48,6 @@ class ACFCTR_Core
 
 		return $field;
 	}
-
 
 	private function get_taxonomy_term( $value, $prefix, $choices = array() )
 	{
@@ -72,9 +70,7 @@ class ACFCTR_Core
 		return $choices;
 	}
 
-	/*
-	 * For some reason with data-ui="1" on conditional fields, with no conditional rules set, the update will still get a null value on a conditional. Check for it and unset to avoid issues.
-	 */
+	// For some reason with data-ui="1" on conditional fields, with no conditional rules set, the update will still get a null value on a conditional. Check for it and unset to avoid issues.
 	public function check_empty_conditionals( $field )
 	{
 		if ( ! $field['conditional_logic'] || isset( $field['conditional_logic'][0][0]['field'] ) ) {
