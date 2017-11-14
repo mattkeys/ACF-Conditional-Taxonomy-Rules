@@ -223,7 +223,7 @@
 				group		= $( $tr ).closest('.rule-group').data('id'),
 				rule_id		= $( $tr ).closest('.rule').data('id');
 
- 				if ( selections[key][group] ) {
+ 				if ( key in selections && group in selections[ key ] && rule_id in selections[ key ][ group ] ) {
 					$value.val( selections[ key ][ group ][rule_id]['value'] );
 				}
 
