@@ -21,7 +21,7 @@
 			key			: field_key,
 		});
 
-		acf.select2.init( select2, args );	
+		acf.select2.init( select2, args );
 	});
 
 	acf.field_group.conditional_logic_with_taxonomy = acf.model.extend( {
@@ -114,7 +114,7 @@
 		*  @param	$post_id (int)
 		*  @return	$post_id (int)
 		*/
-		
+
 		render_fields: function() {
 
 			var self = this;
@@ -123,17 +123,17 @@
 
 				self.render_field( $(this) );
 
-			});	
+			});
 
 		},
-		
-		
+
+
 		/*
 		*  render_field
 		*
 		*  Come back around after ACF renders the rules and add back in Taxonomy rules it removed
 		*/
-		
+
 		render_field: function( $field ) {
 			// reference
 			var self = this;
@@ -223,7 +223,9 @@
 				group		= $( $tr ).closest('.rule-group').data('id'),
 				rule_id		= $( $tr ).closest('.rule').data('id');
 
-				$value.val( selections[ key ][ group ][rule_id]['value'] );
+ 				if ( key in selections && group in selections[ key ] && rule_id in selections[ key ][ group ] ) {
+					$value.val( selections[ key ][ group ][rule_id]['value'] );
+				}
 
 			// populate triggers
 			if ( triggers ) {
@@ -257,7 +259,7 @@
 			} else if ( field_type == "select" || field_type == "checkbox" || field_type == "radio" ) {
 
 				// vars
-				var lines = $field.find('.acf-field[data-name="choices"] textarea').val().split("\n");	
+				var lines = $field.find('.acf-field[data-name="choices"] textarea').val().split("\n");
 
 				$.each(lines, function(i, line){
 
@@ -269,7 +271,7 @@
 					line[1] = line[1] || line[0];
 
 
-					// append					
+					// append
 					choices.push({
 						'value': $.trim( line[0] ),
 						'label': $.trim( line[1] )
@@ -282,18 +284,18 @@
 				var $allow_null = $field.find('.acf-field[data-name="allow_null"]');
 
 				if( $allow_null.exists() ) {
-					
+
 					if( $allow_null.find('input:checked').val() == '1' ) {
-						
+
 						choices.unshift({
 							'value': '',
 							'label': acf._e('null')
 						});
-						
+
 					}
-					
+
 				}
-				
+
 			} else if ( 'taxonomy' == field_type ) {
 				if ( key in selections && group in selections[ key ] && rule_id in selections[ key ][ group ] ) {
 					choices.push({
@@ -348,7 +350,7 @@
 			// vars
 			var $rule = e.$el.closest('.rule');
 
-			// render		
+			// render
 			this.rerender_rule( $rule );
 		},
 
@@ -358,7 +360,7 @@
 
 			value_parent	= $( '.value', $rule );
 			value_field		= $( 'input[type="hidden"]', value_parent );
-			
+
 			$( value_field ).val( new_val );
 		}
 
