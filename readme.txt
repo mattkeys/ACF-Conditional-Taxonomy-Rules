@@ -13,7 +13,7 @@ This plugin expands on the ACF conditional functionality to allow for taxonomy f
 
 This plugin expands on the ACF conditional functionality to allow for taxonomy field types and terms to be selected for conditional rules.
 
-NOTE: This plugin *requires* ACF v5.3+. This plugin is not designed to work on ACF v4.x.
+NOTE: This plugin *requires* ACF v5.6.6+. This plugin is not designed to work on ACF v4.x.
 
 == Installation & Configuration ==
 
