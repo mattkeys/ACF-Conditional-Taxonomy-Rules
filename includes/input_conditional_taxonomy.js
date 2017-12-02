@@ -3,11 +3,7 @@
 	acf.conditional_logic_with_taxonomy = acf.model.extend({
 		actions: {
 			'ready 20':	'render',
-		},
-		
-		events: {
-			'change .acf-field-taxonomy select': 	'change',
-			'change .acf-field-taxonomy input': 	'change'
+			'change 20': 'change'
 		},
 
 		/*
@@ -38,7 +34,7 @@
 			
 			
 			// render fields
-			this.render_fields( $targets );
+			this.renderFields( $targets );
 			
 			
 			// action for 3rd party customization
@@ -60,54 +56,34 @@
 		*  @return	$post_id (int)
 		*/
 		
-		change: function( e ){
-			
-			// debug
-			// console.log( 'conditional_logic.change(%o)', $input );
-			
+		change: function( $input ){
 			
 			// vars
-			var $input = e.$el,
-				$field = acf.get_field_wrap( $input ),
-				key = $field.data('key');
-
-			// bail early if this field does not trigger any actions
-			if( typeof acf.conditional_logic.triggers[key] === 'undefined' ) {
-				
-				return false;
-				
-			}
+			var $trigger = acf.get_field_wrap($input);
+			var key = $trigger.data('key');
+			var trigger = acf.conditional_logic.getTrigger(key);
 			
+			// bail early if this field is not a trigger
+			if( !trigger ) return false;
 			
-			// vars
-			$parent = $field.parent();
-			
-			
-			// update visibility
-			for( var i in acf.conditional_logic.triggers[ key ] ) {
+			// loop
+			for( var target in trigger ) {
 				
-				// get the target key
-				var target_key = acf.conditional_logic.triggers[ key ][ i ];
-				
-				
-				// get targets
-				var $targets = acf.get_fields(target_key, $parent, true);
-				
+				// get target(s)
+				var $targets = acf.conditional_logic.findTarget( $trigger, target );
 				
 				// render
-				this.render_fields( $targets );
+				this.renderFields( $targets );
 				
 			}
 			
-			
 			// action for 3rd party customization
-			acf.do_action('refresh', $parent);
-			
+			acf.do_action('refresh', this.$parent);
 		},
 		
 		
 		/*
-		*  render_fields
+		*  renderFields
 		*
 		*  This function will render a selection of fields
 		*
@@ -119,7 +95,7 @@
 		*  @return	$post_id (int)
 		*/
 		
-		render_fields: function( $targets ) {
+		renderFields: function( $targets ) {
 		
 			// reference
 			var self = this;
@@ -128,7 +104,7 @@
 			// loop over targets and render them			
 			$targets.each(function(){
 					
-				self.render_field( $(this) );
+				self.renderField( $(this) );
 				
 			});
 			
@@ -136,7 +112,7 @@
 		
 		
 		/*
-		*  render_field
+		*  renderField
 		*
 		*  This function will render a field
 		*
@@ -148,85 +124,57 @@
 		*  @return	$post_id (int)
 		*/
 		
-		render_field : function( $target ){
-			
+		renderField : function( $target ){
 			// vars
+			var visibility = false;
 			var key = $target.data('key');
+			var condition = acf.conditional_logic.getCondition( key );
 			
 			
 			// bail early if this field does not contain any conditional logic
-			if( typeof acf.conditional_logic.items[ key ] === 'undefined' ) {
-				
-				return false;
-				
-			}
-			
-			
-			// vars
-			var visibility = false;
-			
-			
-			// debug
-			//console.log( 'conditional_logic.render_field(%o)', $field );
-			
-			
-			// get conditional logic
-			var groups = acf.conditional_logic.items[ key ];
-			
-			
-			// calculate visibility
-			for( var i = 0; i < groups.length; i++ ) {
-				
+			if( !condition ) return false;
+
+			for( var i = 0; i < condition.length; i++ ) {
 				// vars
-				var group = groups[i],
+				var group = condition[i],
 					match_group	= true;
 				
+				// loop
 				for( var k = 0; k < group.length; k++ ) {
 					
 					// vars
 					var rule = group[k];
 					
-					
 					// get trigger for rule
-					var $trigger = acf.conditional_logic.get_trigger( $target, rule.field );
-					
+					var $trigger = acf.conditional_logic.findTarget( $target, rule.field );
 					
 					// break if rule did not validate
 					if( !this.calculate(rule, $trigger, $target) ) {
-						
 						match_group = false;
 						break;
-						
-					}
-										
+					}					
 				}
-				
 				
 				// set visibility if rule group did validate
 				if( match_group ) {
-					
 					visibility = true;
 					break;
-					
 				}
-				
 			}
-			
 			
 			// hide / show field
 			if( visibility ) {
 				
-				acf.conditional_logic.show_field( $target );					
+				acf.conditional_logic.showField( $target );					
 			
 			} else {
 				
-				acf.conditional_logic.hide_field( $target );
+				acf.conditional_logic.hideField( $target );
 			
 			}
 			
 		},
 
-		
 		/*
 		*  calculate
 		*

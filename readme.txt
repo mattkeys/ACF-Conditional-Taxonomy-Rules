@@ -24,6 +24,11 @@ NOTE: This plugin *requires* ACF v5.3+. This plugin is not designed to work on A
 
 == Changelog ==
 
+= 2.0.0 =
+* Pretty big rewrites to make this thing less confusing to read through and remove redundant code blocks repeated from ACF plugin.
+* ACF 5.6.6 compatibility (NOTE: This version requires 5.6.6+)
+* Added support for frontend ACF forms
+
 = 1.0.1 =
 * Fixing a variety of bugs related to adding/removing taxonomy conditional settings in the admin area, particularly when there are multiple conditions
 

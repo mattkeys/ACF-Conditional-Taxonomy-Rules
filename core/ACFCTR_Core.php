@@ -15,12 +15,13 @@ class ACFCTR_Core
 	public function init()
 	{
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_script' ), 100 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_script' ), 100 );
 		add_filter( 'acf/validate_field/type=select', array( $this, 'conditional_taxonomy_select_args' ) );
 		add_filter( 'acf/update_field', array( $this, 'check_empty_conditionals' ) );
 	}
 
 	public function enqueue_script()
-	{		
+	{
 		if ( wp_script_is( 'acf-field-group', 'enqueued' ) ) {
 			wp_enqueue_script( 'acf-field-group-conditional-taxonomy', ACFCTR_PUBLIC_PATH . 'includes/field_group_conditional_taxonomy.js', array( 'acf-field-group' ), false, true );
 		}
@@ -86,4 +87,4 @@ class ACFCTR_Core
 
 }
 
-add_action( 'admin_init', array( new ACFCTR_Core, 'init' ) );
+add_action( 'plugins_loaded', array( new ACFCTR_Core, 'init' ) );
