@@ -1,0 +1,19 @@
+{
+  "name": "mattkeys/acf-conditional-taxonomy-rules",
+  "description": "WordPress Plugin to allow Advanced Custom Fields conditional rules to use 'taxonomy' field types.",
+  "keywords": [
+    "advancedcustomfields", "acf", "conditional logic", "plugin", "taxonomy", "wordpress"
+  ],
+  "homepage": "https://github.com/mattkeys/ACF-Conditional-Taxonomy-Rules",
+  "license": "GPLv2 or later",
+  "authors": [
+    {
+      "name": "Matt Keys",
+      "homepage": "https://mattkeys.me"
+    }
+  ],
+  "type": "wordpress-plugin",
+  "require": {
+    "composer/installers": "~1.0"
+  }
+}
