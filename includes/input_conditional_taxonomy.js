@@ -1,6 +1,6 @@
 (function($){
 
-	// a few helper functions copied from acf-inpu.js
+	// a few helper functions copied from acf-input.js
 	var parseString = function( val ){
 		return val ? '' + val : '';
 	};
