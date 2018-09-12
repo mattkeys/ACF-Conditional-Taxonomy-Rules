@@ -7,13 +7,13 @@ Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin expands on the ACF conditional functionality to allow for taxonomy field types and terms to be selected for conditional rules.
+This plugin expands on the ACF conditional functionality to allow for conditionals based on a selected taxonomy term ID.
 
 == Description ==
 
-This plugin expands on the ACF conditional functionality to allow for taxonomy field types and terms to be selected for conditional rules.
+This plugin expands on the ACF conditional functionality to allow for conditionals based on a selected taxonomy term ID.
 
-NOTE: This plugin *requires* ACF v5.6.6+. This plugin is not designed to work on ACF v4.x.
+NOTE: This plugin *requires* ACF v5.7.0+. This plugin is not designed to work on ACF v4.x.
 
 == Installation & Configuration ==
 
@@ -23,6 +23,9 @@ NOTE: This plugin *requires* ACF v5.6.6+. This plugin is not designed to work on
 4. Upload the file, and click "Activate Plugin" after the installation completes
 
 == Changelog ==
+
+= 3.0.0 =
+* Updates to support ACF 5.7.x, which is now required to run this plugin
 
 = 2.0.0 =
 * Pretty big rewrites to make this thing less confusing to read through and remove redundant code blocks repeated from ACF plugin.
