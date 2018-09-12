@@ -10,19 +10,16 @@
 
 class ACFCTR_Core
 {
-	private $conditionals = array();
 
 	public function init()
 	{
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_script' ), 100 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_script' ), 100 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_script' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_script' ) );
 	}
 
 	public function enqueue_script()
 	{
-		if ( wp_script_is( 'acf-input', 'enqueued' ) ) {
-			wp_enqueue_script( 'acf-input-conditional-taxonomy', ACFCTR_PUBLIC_PATH . 'includes/input_conditional_taxonomy.js', array( 'acf-input' ), '3.0.0', true );
-		}
+		wp_enqueue_script( 'acf-input-conditional-taxonomy', ACFCTR_PUBLIC_PATH . 'includes/input_conditional_taxonomy.js', array( 'acf-input' ), '3.0.0' );
 	}
 
 }

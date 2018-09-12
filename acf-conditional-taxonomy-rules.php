@@ -2,7 +2,7 @@
 /*
 Plugin Name: ACF Conditional Taxonomy Rules
 Description: Allow conditional rules to use 'taxonomy' field types
-Version: 3.0.0
+Version: 3.0.1
 Author: mattkeys
 Author URI: http://mattkeys.me
 License: GPL2

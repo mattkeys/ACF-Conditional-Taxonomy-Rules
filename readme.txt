@@ -24,6 +24,10 @@ NOTE: This plugin *requires* ACF v5.7.0+. This plugin is not designed to work on
 
 == Changelog ==
 
+= 3.0.1 =
+* Bugfix enqueuing script in footer sometimes causing timing issues
+* Cleanup some unneeded code from v2.0.0
+
 = 3.0.0 =
 * Updates to support ACF 5.7.x, which is now required to run this plugin
 
