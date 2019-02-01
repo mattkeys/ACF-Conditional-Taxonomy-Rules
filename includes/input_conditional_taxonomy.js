@@ -8,12 +8,12 @@
 		return ( parseString(v1).toLowerCase() === parseString(v2).toLowerCase() );
 	};
 	var inArray = function( v1, array ){
-		
+
 		// cast all values as string
 		array = array.map(function(v2){
 			return parseString(v2);
 		});
-		
+
 		return (array.indexOf( v1 ) > -1);
 	}
 
@@ -35,7 +35,22 @@
 			return '<input type="number" />';
 		}
 	});
-	
+
 	acf.registerConditionType( TaxonomyEqualTo );
+
+	var TaxonomyNotEqualTo = TaxonomyEqualTo.extend({
+		type: 'taxonomyNotEqualTo',
+		operator: '!=',
+		label: "Selection Term ID not equal to",
+		fieldTypes: ['taxonomy'],
+		match: function (rule, field) {
+			return !TaxonomyEqualTo.prototype.match.apply(this, arguments)
+		},
+		choices: function (fieldObject) {
+			return '<input type="number" />';
+		}
+	});
+
+	acf.registerConditionType(TaxonomyNotEqualTo);
 
 })(jQuery);
