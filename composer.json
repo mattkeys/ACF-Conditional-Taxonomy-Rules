@@ -2,7 +2,7 @@
   "name": "mattkeys/acf-conditional-taxonomy-rules",
   "type": "wordpress-plugin",
   "description": "This plugin expands on the ACF conditional functionality to allow for conditionals based on a selected taxonomy term ID.",
-  "license": "GPLv2 or later",
+  "license": "GPL-2.0-or-later",
   "authors": [
     {
       "name": "Matt Keys",
