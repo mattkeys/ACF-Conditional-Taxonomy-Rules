@@ -20,7 +20,7 @@
 	// add our new conditional for matching against taxonomy IDs
 	var TaxonomyEqualTo = acf.Condition.extend({
 		type: 'taxonomyEqualTo',
-		operator: '==',
+		operator: '===',
 		label: 'Selection Term ID equals',
 		fieldTypes: [ 'taxonomy' ],
 		match: function( rule, field ){
@@ -40,7 +40,7 @@
 
 	var TaxonomyNotEqualTo = TaxonomyEqualTo.extend({
 		type: 'taxonomyNotEqualTo',
-		operator: '!=',
+		operator: '!==',
 		label: "Selection Term ID not equal to",
 		fieldTypes: ['taxonomy'],
 		match: function (rule, field) {
@@ -52,5 +52,40 @@
 	});
 
 	acf.registerConditionType(TaxonomyNotEqualTo);
+
+
+  	// add our new conditional for matching against taxonomy IDs
+	var TaxonomyEqualToName = acf.Condition.extend({
+		type: 'taxonomyEqualToName',
+		operator: '==',
+		label: 'Selection Term Name equals',
+		fieldTypes: [ 'taxonomy' ],
+		match: function( rule, field ){
+      var val = field.val();
+      // console.log('taxonomy array', rule, field, val);
+      // console.log('field details', field.type, field.$input(), field.$control());
+      console.log('selected', $(field.$control()).find(':selected'));
+      // console.log('selected data', $(field.$control()).find(':selected').data());
+      selected = $(field.$control()).find(':selected');
+      
+      names = [];
+      $.each(selected, function(index, option) {
+        name = option.text.toLowerCase().trim();
+        if(name.substr(0,1) === '-') {
+          name = name.substr(1).trim();
+        }
+        //console.log('option', name);
+        names.push(name);
+      });
+
+      console.log('names', names);
+      return inArray( rule.value.toLowerCase().trim(), names );
+		},
+		choices: function( fieldObject ){
+			return '<input type="string" />';
+		}
+	});
+
+  acf.registerConditionType( TaxonomyEqualToName );
 
 })(jQuery);
