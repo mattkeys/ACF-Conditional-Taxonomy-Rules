@@ -59,9 +59,9 @@
     fieldTypes: ["taxonomy"],
     match: function (rule, field) {
       selected = $(field.$control()).find(":selected");
-      names = [];
+      var names = [];
       $.each(selected, function (index, option) {
-        name = option.text.toLowerCase().trim();
+        var name = option.text.toLowerCase().trim();
         if (name.substr(0, 1) === "-") {
           name = name.substr(1).trim();
         }
