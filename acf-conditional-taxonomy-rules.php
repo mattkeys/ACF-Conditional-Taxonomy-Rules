@@ -1,6 +1,7 @@
 <?php
-/*
+/**
 Plugin Name: ACF Conditional Taxonomy Rules
+GitHub Plugin URI: https://github.com/mattkeys/ACF-Conditional-Taxonomy-Rules
 Description: Allow conditional rules to use 'taxonomy' field types
 Version: 3.0.1
 Author: mattkeys
