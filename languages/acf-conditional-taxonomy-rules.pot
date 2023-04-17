@@ -1,0 +1,41 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ACF Conditional Taxonomy Rules\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-15 08:36+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.4; wp-6.2\n"
+"X-Domain: acf-conditional-taxonomy-rules"
+
+#. Name of the plugin
+msgid "ACF Conditional Taxonomy Rules"
+msgstr ""
+
+#. Description of the plugin
+msgid "Allow conditional rules to use 'taxonomy' field types"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "http://mattkeys.me"
+msgstr ""
+
+#. Author of the plugin
+msgid "mattkeys"
+msgstr ""
+
+#: core/ACFCTR_Core.php:24
+msgid "Selection Term ID equals"
+msgstr ""
+
+#: core/ACFCTR_Core.php:25
+msgid "Selection Term ID not equal to"
+msgstr ""
