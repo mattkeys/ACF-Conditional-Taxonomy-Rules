@@ -1,8 +1,8 @@
 === ACF Conditional Taxonomy Rules ===
-Contributors: mattkeys
+Contributors: mattkeys, MadMaxInfinity
 Tags: ACF, Advanced Custom Fields, Conditional, Taxonomy, Conditional Taxonomy
 Requires at least: 3.6
-Tested up to: 4.8
+Tested up to: 6.1.4
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -23,6 +23,10 @@ NOTE: This plugin *requires* ACF v5.7.0+. This plugin is not designed to work on
 4. Upload the file, and click "Activate Plugin" after the installation completes
 
 == Changelog ==
+
+= 3.0.1.1 =
+* Added localization
+* Added french translation
 
 = 3.0.1 =
 * Bugfix enqueuing script in footer sometimes causing timing issues
