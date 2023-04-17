@@ -21,7 +21,7 @@
 	var TaxonomyEqualTo = acf.Condition.extend({
 		type: 'taxonomyEqualTo',
 		operator: '==',
-		label: 'Selection Term ID equals',
+		label: acfict.term_id_equals,
 		fieldTypes: [ 'taxonomy' ],
 		match: function( rule, field ){
 			var val = field.val();
@@ -41,7 +41,7 @@
 	var TaxonomyNotEqualTo = TaxonomyEqualTo.extend({
 		type: 'taxonomyNotEqualTo',
 		operator: '!=',
-		label: "Selection Term ID not equal to",
+		label: acfict.term_id_not_equal,
 		fieldTypes: ['taxonomy'],
 		match: function (rule, field) {
 			return !TaxonomyEqualTo.prototype.match.apply(this, arguments)
